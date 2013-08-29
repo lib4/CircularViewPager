@@ -18,7 +18,7 @@ public class MainActivity extends Activity {
 				R.layout.first, R.layout.second,
 				R.layout.third });
 		myPager.setAdapter(adapter);
-		myPager.setCurrentItem(3);
+		myPager.setCurrentItem(1);
 		setContentView(myPager);
 
 	}

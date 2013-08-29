@@ -5,6 +5,7 @@ import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -27,16 +28,23 @@ public CircularPagerAdapter(final ViewPager pager, int... pageIDs) {
     pager.setOnPageChangeListener(new OnPageChangeListener() {
 
         public void onPageSelected(int position) {
+        	
             int pageCount = getCount();
-            if (position == 0){
-                pager.setCurrentItem(pageCount-2,false);
-            } else if (position == pageCount-1){
-                pager.setCurrentItem(1,false);
+            Log.e("Position"," "+position+" Page count: "+pageCount);
+
+            if (position == pageCount-1){
+              pager.setCurrentItem(1,false);
+          }
+            if(position==0){
+            	pager.setCurrentItem(pageCount-2,false);
             }
+            
         }
 
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             // TODO Auto-generated method stub
+        	
+        	 Log.e("Position"," "+position+" positionOffset  : "+positionOffset);
         }
 
         public void onPageScrollStateChanged(int state) {
@@ -87,5 +95,10 @@ public Parcelable saveState() {
 @Override
 public void startUpdate(View container) {
     // TODO Auto-generated method stub
+}
+
+@Override
+public float getPageWidth(int position){
+	return 0.8f;
 }
 }
